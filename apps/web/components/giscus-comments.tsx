@@ -13,9 +13,9 @@ export function GiscusComments() {
       </p>
       <Giscus
         repo="nurfajar/myportfolio"
-        repoId=""
+        repoId="R_kgDORwualQ"
         category="Blog Comments"
-        categoryId=""
+        categoryId="DIC_kwDORwualc4C5UuX"
         mapping="pathname"
         strict="0"
         reactionsEnabled="1"
