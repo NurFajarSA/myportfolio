@@ -13,20 +13,7 @@ const blogs = defineCollection({
     description: s.string().max(300),
     date: s.isodate(),
     tags: s.array(s.string()).default([]),
-    published: s.boolean().default(true),
-    body: s.mdx(),
-  }),
-})
-
-const projects = defineCollection({
-  name: "Project",
-  pattern: "projects/**/*.mdx",
-  schema: s.object({
-    title: s.string().max(120),
-    slug: s.path(),
-    dataId: s.string(),
-    description: s.string().max(300),
-    date: s.isodate(),
+    projectId: s.string().optional(),
     published: s.boolean().default(true),
     body: s.mdx(),
   }),
@@ -41,7 +28,7 @@ export default defineConfig({
     name: "[name]-[hash:6].[ext]",
     clean: true,
   },
-  collections: { blogs, projects },
+  collections: { blogs },
   mdx: {
     remarkPlugins: [remarkGfm],
     rehypePlugins: [

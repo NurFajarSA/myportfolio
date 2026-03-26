@@ -3,6 +3,7 @@ import path from "node:path"
 import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 import { blogs } from "@/lib/content"
+import { data } from "@/lib/data"
 import { MDXContent } from "@/lib/mdx"
 import { extractToc } from "@/lib/toc"
 import { getReadingTime } from "@/lib/reading-time"
@@ -66,6 +67,15 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const toc = extractToc(raw)
   const readingTime = getReadingTime(raw)
 
+  const projectData = post.projectId
+    ? data.projects.find((p) => p.id === post.projectId)
+    : null
+  const experience = projectData
+    ? data.experience.find((e) => e.id === projectData.fromExperience)
+    : null
+
+  const hasSidebar = toc.length > 0 || projectData
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
@@ -96,7 +106,13 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           ]}
         />
 
-        <div className="grid grid-cols-1 gap-12 md:grid-cols-[1fr_220px]">
+        <div
+          className={
+            hasSidebar
+              ? "grid grid-cols-1 gap-12 md:grid-cols-[1fr_220px]"
+              : ""
+          }
+        >
           <div>
             <header className="mb-12">
               <div className="flex items-center gap-3 font-mono text-xs text-pf-text-faint">
@@ -132,10 +148,66 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             <GiscusComments />
           </div>
 
-          {toc.length > 0 && (
-            <aside className="hidden md:block">
-              <div className="sticky top-20">
-                <TableOfContents entries={toc} />
+          {hasSidebar && (
+            <aside className="hidden space-y-8 md:block">
+              <div className="sticky top-20 space-y-8">
+                {toc.length > 0 && <TableOfContents entries={toc} />}
+
+                {projectData && (
+                  <>
+                    <div>
+                      <p className="mb-3 text-xs uppercase tracking-wider text-pf-text-faint">
+                        Technologies
+                      </p>
+                      <div className="flex flex-wrap gap-2">
+                        {projectData.technologies.map((tech) => (
+                          <span
+                            key={tech}
+                            className="rounded bg-pf-muted/50 px-2 py-1 font-mono text-xs text-pf-accent"
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div>
+                      <p className="mb-3 text-xs uppercase tracking-wider text-pf-text-faint">
+                        Highlights
+                      </p>
+                      <ul className="space-y-2">
+                        {projectData.highlights.map((h) => (
+                          <li
+                            key={h}
+                            className="flex gap-2 text-sm text-pf-text-muted"
+                          >
+                            <span className="mt-1 shrink-0 text-pf-accent">
+                              •
+                            </span>
+                            {h}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </>
+                )}
+
+                {experience && (
+                  <div>
+                    <p className="mb-3 text-xs uppercase tracking-wider text-pf-text-faint">
+                      Context
+                    </p>
+                    <p className="text-sm text-pf-text-muted">
+                      Built at{" "}
+                      <span className="font-medium text-pf-text-secondary">
+                        {experience.company}
+                      </span>
+                    </p>
+                    <p className="mt-1 font-mono text-xs text-pf-text-subtle">
+                      {experience.startDate} — {experience.endDate}
+                    </p>
+                  </div>
+                )}
               </div>
             </aside>
           )}

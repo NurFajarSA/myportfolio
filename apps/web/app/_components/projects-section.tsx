@@ -1,5 +1,6 @@
 import Link from "next/link"
 import { data } from "@/lib/data"
+import { blogs } from "@/lib/content"
 import { TextReveal } from "./text-reveal"
 
 export function ProjectsSection() {
@@ -13,6 +14,7 @@ export function ProjectsSection() {
         <div className="space-y-20">
           {data.projects.map((proj, i) => {
             const isEven = i % 2 === 1
+            const blogPost = blogs.find((b) => b.projectId === proj.id && b.published)
             return (
               <TextReveal key={proj.id}>
                 <article
@@ -28,12 +30,16 @@ export function ProjectsSection() {
                   {/* Content */}
                   <div className="flex-1">
                     <h3 className="text-2xl font-bold text-pf-text-primary">
-                      <Link
-                        href={`/projects/${proj.id}`}
-                        className="transition-colors hover:text-pf-accent"
-                      >
-                        {proj.name} ↗
-                      </Link>
+                      {blogPost ? (
+                        <Link
+                          href={`/${blogPost.slug}`}
+                          className="transition-colors hover:text-pf-accent"
+                        >
+                          {proj.name} ↗
+                        </Link>
+                      ) : (
+                        proj.name
+                      )}
                     </h3>
                     <p className="mt-3 text-sm leading-relaxed text-pf-text-muted">
                       {proj.description}
