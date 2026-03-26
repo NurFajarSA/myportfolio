@@ -12,7 +12,7 @@ export function GiscusComments() {
         {"// comments.md"}
       </p>
       <Giscus
-        repo="nurfajar/myportfolio"
+        repo="NurFajarSA/myportfolio"
         repoId="R_kgDORwualQ"
         category="Blog Comments"
         categoryId="DIC_kwDORwualc4C5UuX"
