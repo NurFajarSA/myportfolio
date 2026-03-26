@@ -1,11 +1,12 @@
+import Link from "next/link"
 import { data } from "@/lib/data"
 import { TextReveal } from "./text-reveal"
 
 export function ProjectsSection() {
   return (
-    <section className="py-24 md:py-32 px-6">
-      <div className="max-w-4xl mx-auto">
-        <h2 className="font-mono text-sm text-pf-accent mb-12">
+    <section className="px-6 py-24 md:py-32">
+      <div className="mx-auto max-w-4xl">
+        <h2 className="mb-12 font-mono text-sm text-pf-accent">
           {"// builds.md"}
         </h2>
 
@@ -15,11 +16,11 @@ export function ProjectsSection() {
             return (
               <TextReveal key={proj.id}>
                 <article
-                  className={`flex flex-col md:flex-row gap-6 md:gap-12 items-start ${isEven ? "md:flex-row-reverse md:text-right" : ""}`}
+                  className={`flex flex-col items-start gap-6 md:flex-row md:gap-12 ${isEven ? "md:flex-row-reverse md:text-right" : ""}`}
                 >
                   {/* Number */}
                   <div className="shrink-0">
-                    <span className="text-6xl md:text-7xl font-black text-pf-text-watermark select-none">
+                    <span className="text-6xl font-black text-pf-text-watermark select-none md:text-7xl">
                       {String(i + 1).padStart(2, "0")}
                     </span>
                   </div>
@@ -27,9 +28,14 @@ export function ProjectsSection() {
                   {/* Content */}
                   <div className="flex-1">
                     <h3 className="text-2xl font-bold text-pf-text-primary">
-                      {proj.name}
+                      <Link
+                        href={`/projects/${proj.id}`}
+                        className="transition-colors hover:text-pf-accent"
+                      >
+                        {proj.name} ↗
+                      </Link>
                     </h3>
-                    <p className="mt-3 text-sm text-pf-text-muted leading-relaxed">
+                    <p className="mt-3 text-sm leading-relaxed text-pf-text-muted">
                       {proj.description}
                     </p>
 
@@ -52,7 +58,7 @@ export function ProjectsSection() {
                       {proj.technologies.map((tech) => (
                         <span
                           key={tech}
-                          className="bg-pf-muted/50 text-pf-accent px-2 py-0.5 rounded font-mono text-xs"
+                          className="rounded bg-pf-muted/50 px-2 py-0.5 font-mono text-xs text-pf-accent"
                         >
                           {tech}
                         </span>

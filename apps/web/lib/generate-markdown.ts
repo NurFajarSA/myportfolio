@@ -5,9 +5,7 @@ export function generateMarkdown(): string {
 
   lines.push(`# ${data.personal.name}`)
   lines.push("")
-  lines.push(
-    `**${data.personal.title}** · 📍 ${data.personal.location}`
-  )
+  lines.push(`**${data.personal.title}** · 📍 ${data.personal.location}`)
   lines.push("")
   lines.push(`> ${data.personal.tagline}`)
   lines.push("")
@@ -53,9 +51,7 @@ export function generateMarkdown(): string {
       lines.push(`- ${h}`)
     }
     lines.push("")
-    lines.push(
-      `**Tech:** ${exp.technologies.map((t) => `\`${t}\``).join(" ")}`
-    )
+    lines.push(`**Tech:** ${exp.technologies.map((t) => `\`${t}\``).join(" ")}`)
   }
   lines.push("")
   lines.push("---")
@@ -87,9 +83,7 @@ export function generateMarkdown(): string {
   lines.push("")
   lines.push("### LET'S BUILD SOMETHING")
   lines.push("")
-  lines.push(
-    `📧 [${data.personal.email}](mailto:${data.personal.email})`
-  )
+  lines.push(`📧 [${data.personal.email}](mailto:${data.personal.email})`)
   lines.push("")
   for (const link of data.personal.socialLinks) {
     lines.push(`- [${link.platform}](${link.url})`)

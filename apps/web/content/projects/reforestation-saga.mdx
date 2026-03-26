@@ -1,0 +1,29 @@
+---
+title: "Reforestation Saga"
+dataId: "reforestation-saga"
+description: "A casual iOS game utilizing Apple Vision Framework for blink-based interaction with a component-based game architecture."
+date: 2025-08-20
+published: true
+---
+
+## Overview
+
+Reforestation Saga is a casual iOS game where players plant trees using **blink-based interaction** powered by Apple's Vision Framework. Built at Apple Developer Academy as an exploration of accessibility-first game design.
+
+## The Concept
+
+What if you could play a game without touching the screen? We explored this idea through a reforestation-themed casual game where blinking triggers in-game actions like planting seeds and watering trees.
+
+## Technical Deep Dive
+
+### Vision Framework for Blink Detection
+
+We leveraged `VNDetectFaceLandmarksRequest` to track eye landmarks in real-time. By monitoring the eye aspect ratio (EAR) across frames, we could reliably detect intentional blinks vs. natural ones.
+
+### Component-Based Game Architecture
+
+Rather than a monolithic game loop, we built the game using a component-based architecture with SpriteKit. Each game entity (trees, clouds, rain) is composed of reusable behavior components — making the codebase maintainable and extensible.
+
+### Performance Considerations
+
+Running real-time face detection alongside a SpriteKit game loop required careful optimization. We processed vision requests on a background queue and throttled detection to 15fps while keeping the game rendering at 60fps.

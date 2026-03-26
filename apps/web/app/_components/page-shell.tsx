@@ -22,10 +22,12 @@ export function PageShell({ children }: { children: ReactNode }) {
   }
 
   return (
-    <ToggleContext value={() => {
-      setShowMarkdown(true)
-      window.scrollTo(0, 0)
-    }}>
+    <ToggleContext
+      value={() => {
+        setShowMarkdown(true)
+        window.scrollTo(0, 0)
+      }}
+    >
       {children}
     </ToggleContext>
   )

@@ -1,0 +1,40 @@
+---
+title: "Hello World — Why I Started Writing"
+description: "First post. Why I decided to start a blog alongside my portfolio, and what you can expect."
+date: 2026-03-26
+tags: ["intro", "meta"]
+published: true
+---
+
+## Why a blog?
+
+I've always believed that building things is only half the story. The other half is **explaining why** — the trade-offs, the dead ends, the moments where everything clicked.
+
+This blog is where I'll do that. Expect posts about:
+
+- Engineering decisions and architecture deep dives
+- Project retrospectives — what worked, what didn't
+- Things I learned the hard way so you don't have to
+
+## The stack behind this site
+
+This portfolio is built with **Next.js**, **Tailwind CSS v4**, and deployed on **Vercel**. Blog content is written in MDX and processed at build time with [Velite](https://velite.js.org) — type-safe, file-based, zero runtime cost.
+
+```typescript
+// velite gives us typed content at build time
+import { blogs } from "#content"
+
+const posts = blogs
+  .filter((p) => p.published)
+  .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+```
+
+<Callout type="tip">
+Every post is just an `.mdx` file in the repo. Push to main, Vercel rebuilds, done.
+</Callout>
+
+## What's next
+
+I have a few posts in the pipeline about building scalable systems at startups, working with cross-functional teams at Apple Developer Academy, and migrating legacy PHP systems to modern stacks.
+
+Stay tuned.

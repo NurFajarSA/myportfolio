@@ -1,27 +1,20 @@
 "use client"
 
+import Link from "next/link"
 import { MapPin } from "lucide-react"
 import { data } from "@/lib/data"
-import { generateMarkdown } from "@/lib/generate-markdown"
 import { useToggleMarkdown } from "./page-shell"
-
-function openMd() {
-  const md = generateMarkdown()
-  const blob = new Blob([md], { type: "text/plain" })
-  const url = URL.createObjectURL(blob)
-  window.open(url, "_blank")
-}
 
 export function HeroContent() {
   const toggleMarkdown = useToggleMarkdown()
 
   return (
     <div>
-      <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-pf-text-primary leading-[1.1]">
+      <h1 className="text-4xl leading-[1.1] font-bold tracking-tight text-pf-text-primary md:text-5xl lg:text-6xl">
         {data.personal.name}
       </h1>
       <div className="mt-4 space-y-1.5">
-        <p className="text-lg text-pf-accent font-medium">
+        <p className="text-lg font-medium text-pf-accent">
           {data.personal.title}
         </p>
         <p className="flex items-center gap-1.5 text-sm text-pf-text-muted">
@@ -36,7 +29,7 @@ export function HeroContent() {
             href={link.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-sm text-pf-text-subtle hover:text-pf-accent transition-colors"
+            className="text-sm text-pf-text-subtle transition-colors hover:text-pf-accent"
           >
             {link.platform}
           </a>
@@ -45,16 +38,16 @@ export function HeroContent() {
       <div className="mt-8 flex gap-4">
         <button
           onClick={toggleMarkdown}
-          className="text-xs font-mono text-pf-text-ghost hover:text-pf-accent transition-colors cursor-pointer"
+          className="cursor-pointer font-mono text-xs text-pf-text-ghost transition-colors hover:text-pf-accent"
         >
           Are you AI? →
         </button>
-        {/* <button
-          onClick={openMd}
-          className="text-xs font-mono text-pf-text-ghost hover:text-pf-accent transition-colors cursor-pointer"
+        <Link
+          href="/blog"
+          className="font-mono text-xs text-pf-text-ghost transition-colors hover:text-pf-accent"
         >
-          ↗ human.md
-        </button> */}
+          {"// posts.md →"}
+        </Link>
       </div>
     </div>
   )

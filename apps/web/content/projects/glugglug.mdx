@@ -1,0 +1,33 @@
+---
+title: "GlugGlug"
+dataId: "glugglug"
+description: "A water reminder iOS app integrating HealthKit and UserNotification for efficient local data handling and background scheduling."
+date: 2025-06-15
+published: true
+---
+
+## Overview
+
+GlugGlug is a hydration tracking app built during my time at **Apple Developer Academy @BINUS**. The goal was simple: help users drink enough water throughout the day without being annoying about it.
+
+## The Challenge
+
+Most water reminder apps feel spammy. They blast notifications at fixed intervals regardless of context. We wanted something smarter — notifications that respect the user's schedule and integrate with their existing health data.
+
+## Technical Approach
+
+### HealthKit Integration
+
+We used HealthKit to both read and write hydration data. This means GlugGlug plays well with the rest of the Apple health ecosystem — data syncs across Apple Watch, iPhone, and any other HealthKit-compatible app.
+
+### Smart Notifications
+
+Instead of fixed-interval reminders, we implemented a scheduling system using `UserNotification` that adapts based on:
+
+- Time of day
+- Last recorded water intake
+- User-defined quiet hours
+
+### Local-First Architecture
+
+All data stays on-device. No accounts, no cloud sync, no privacy concerns. Core Data handles persistence with a lightweight schema optimized for quick reads.

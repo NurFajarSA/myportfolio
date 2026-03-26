@@ -17,9 +17,7 @@ export function TextReveal({
       ref={ref}
       className={cn(
         "transition-all duration-1000 ease-out",
-        isInView
-          ? "opacity-100 translate-y-0"
-          : "opacity-0 translate-y-12",
+        isInView ? "translate-y-0 opacity-100" : "translate-y-12 opacity-0",
         className
       )}
     >

@@ -1,0 +1,34 @@
+---
+title: "Transaction Service"
+dataId: "transaction-service"
+description: "Transaction service for an accounting software system with reliable processing and data integrity across modules."
+date: 2024-08-01
+published: true
+---
+
+## Overview
+
+A core transaction processing service built for **PX Shredder**'s accounting software. The service handles creation, validation, and reporting of financial transactions within a monolithic Java architecture.
+
+## Technical Architecture
+
+### MVC with Java Quarkus
+
+The service follows a strict MVC pattern built on Quarkus — chosen for its fast startup time and low memory footprint compared to traditional Spring Boot applications. This was important since the service runs alongside other modules in the same monolith.
+
+### RESTful API Design
+
+Clean REST endpoints for transaction CRUD operations, batch processing, and report generation. Each endpoint includes input validation, business rule enforcement, and proper error responses.
+
+### Data Integrity
+
+Financial data demands zero tolerance for inconsistency. We implemented:
+
+- Database transactions with proper isolation levels
+- Optimistic locking for concurrent updates
+- Audit trails for every state change
+- Idempotency keys for retry-safe operations
+
+### Reporting Module
+
+Built-in reporting capabilities for generating transaction summaries, ledger views, and export-ready financial statements — directly from the transaction data without requiring a separate analytics pipeline.

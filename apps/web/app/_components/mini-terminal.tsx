@@ -27,10 +27,13 @@ export function MiniTerminal() {
     const line = lines[visibleLines]!
 
     if (line.type !== "command") {
-      const timer = setTimeout(() => {
-        setVisibleLines((v) => v + 1)
-        setCurrentText("")
-      }, line.type === "empty" ? 200 : 80)
+      const timer = setTimeout(
+        () => {
+          setVisibleLines((v) => v + 1)
+          setCurrentText("")
+        },
+        line.type === "empty" ? 200 : 80
+      )
       return () => clearTimeout(timer)
     }
 
@@ -50,25 +53,29 @@ export function MiniTerminal() {
   }, [visibleLines, currentText])
 
   return (
-    <div role="img" aria-label="Terminal showing developer profile" className="rounded-xl border border-pf-border bg-pf-surface overflow-hidden shadow-2xl">
+    <div
+      role="img"
+      aria-label="Terminal showing developer profile"
+      className="overflow-hidden rounded-xl border border-pf-border bg-pf-surface shadow-2xl"
+    >
       {/* Title bar */}
-      <div className="flex items-center gap-2 px-4 py-2.5 bg-pf-muted border-b border-pf-border">
+      <div className="flex items-center gap-2 border-b border-pf-border bg-pf-muted px-4 py-2.5">
         <div className="size-2.5 rounded-full bg-red-500" />
         <div className="size-2.5 rounded-full bg-yellow-500" />
         <div className="size-2.5 rounded-full bg-green-500" />
-        <span className="ml-2 text-[10px] text-pf-text-subtle font-mono">
+        <span className="ml-2 font-mono text-[10px] text-pf-text-subtle">
           nurfajar — ~/portfolio
         </span>
       </div>
 
       {/* Terminal content */}
-      <div className="p-5 font-mono text-sm leading-relaxed min-h-[180px]">
+      <div className="min-h-[180px] p-5 font-mono text-sm leading-relaxed">
         {lines.slice(0, visibleLines).map((line, i) => (
           <div key={i}>
             {line.type === "command" && (
               <p>
                 <span className="text-pf-accent">$</span>
-                <span className="text-pf-text-body ml-2">{line.text}</span>
+                <span className="ml-2 text-pf-text-body">{line.text}</span>
               </p>
             )}
             {line.type === "output" && (
@@ -79,19 +86,21 @@ export function MiniTerminal() {
         ))}
 
         {/* Currently typing */}
-        {!done && visibleLines < lines.length && lines[visibleLines]?.type === "command" && (
-          <p>
-            <span className="text-pf-accent">$</span>
-            <span className="text-pf-text-body ml-2">{currentText}</span>
-            <span className="inline-block w-1.5 h-4 bg-pf-accent animate-pulse ml-px align-middle" />
-          </p>
-        )}
+        {!done &&
+          visibleLines < lines.length &&
+          lines[visibleLines]?.type === "command" && (
+            <p>
+              <span className="text-pf-accent">$</span>
+              <span className="ml-2 text-pf-text-body">{currentText}</span>
+              <span className="ml-px inline-block h-4 w-1.5 animate-pulse bg-pf-accent align-middle" />
+            </p>
+          )}
 
         {/* Final cursor */}
         {done && (
           <p className="mt-1">
             <span className="text-pf-accent">$</span>
-            <span className="inline-block w-1.5 h-4 bg-pf-accent animate-pulse ml-2 align-middle" />
+            <span className="ml-2 inline-block h-4 w-1.5 animate-pulse bg-pf-accent align-middle" />
           </p>
         )}
       </div>

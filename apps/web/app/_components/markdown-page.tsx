@@ -16,18 +16,18 @@ export function MarkdownPage({ onBack }: { onBack: () => void }) {
   return (
     <div className="min-h-svh bg-pf-bg">
       {/* Top bar */}
-      <div className="sticky top-0 z-10 bg-pf-muted/80 backdrop-blur-sm border-b border-pf-border-muted px-6 py-3 flex items-center justify-between">
+      <div className="sticky top-0 z-10 flex items-center justify-between border-b border-pf-border-muted bg-pf-muted/80 px-6 py-3 backdrop-blur-sm">
         <span className="font-mono text-xs text-pf-text-subtle">human.md</span>
         <div className="flex gap-4">
           <button
             onClick={onBack}
-            className="font-mono text-xs text-pf-text-faint hover:text-pf-accent transition-colors cursor-pointer"
+            className="cursor-pointer font-mono text-xs text-pf-text-faint transition-colors hover:text-pf-accent"
           >
             ← render as html
           </button>
           <button
             onClick={openMd}
-            className="font-mono text-xs text-pf-text-faint hover:text-pf-accent transition-colors cursor-pointer"
+            className="cursor-pointer font-mono text-xs text-pf-text-faint transition-colors hover:text-pf-accent"
           >
             ↗ raw
           </button>
@@ -35,7 +35,7 @@ export function MarkdownPage({ onBack }: { onBack: () => void }) {
       </div>
 
       {/* Markdown content */}
-      <div className="max-w-3xl mx-auto px-6 py-12 font-mono text-sm text-pf-text-body leading-relaxed break-words">
+      <div className="mx-auto max-w-3xl px-6 py-12 font-mono text-sm leading-relaxed break-words text-pf-text-body">
         {/* Comment */}
         <Ln>
           <span className="text-pf-text-ghost italic">
@@ -47,7 +47,7 @@ export function MarkdownPage({ onBack }: { onBack: () => void }) {
         {/* Title */}
         <Ln>
           <span className="text-pf-accent"># </span>
-          <span className="text-pf-text-primary font-bold text-lg">
+          <span className="text-lg font-bold text-pf-text-primary">
             {data.personal.name}
           </span>
         </Ln>
@@ -56,12 +56,14 @@ export function MarkdownPage({ onBack }: { onBack: () => void }) {
         {/* Subtitle */}
         <Ln>
           <span className="text-pf-accent">**</span>
-          <span className="text-pf-text-secondary font-semibold">
+          <span className="font-semibold text-pf-text-secondary">
             {data.personal.title}
           </span>
           <span className="text-pf-accent">**</span>
           <span className="text-pf-text-faint"> · </span>
-          <span className="text-pf-text-muted">📍 {data.personal.location}</span>
+          <span className="text-pf-text-muted">
+            📍 {data.personal.location}
+          </span>
         </Ln>
         <Ln />
 
@@ -72,13 +74,15 @@ export function MarkdownPage({ onBack }: { onBack: () => void }) {
         </Ln>
         <Ln />
 
-        <Ln><span className="text-pf-text-ghost">---</span></Ln>
+        <Ln>
+          <span className="text-pf-text-ghost">---</span>
+        </Ln>
         <Ln />
 
         {/* soul.md */}
         <Ln>
           <span className="text-pf-accent">## </span>
-          <span className="text-pf-text-primary font-bold">soul.md</span>
+          <span className="font-bold text-pf-text-primary">soul.md</span>
         </Ln>
         <Ln />
         <Ln>{data.personal.summary}</Ln>
@@ -87,42 +91,50 @@ export function MarkdownPage({ onBack }: { onBack: () => void }) {
         {/* Education */}
         <Ln>
           <span className="text-pf-accent">**</span>
-          <span className="text-pf-text-secondary font-semibold">Education</span>
+          <span className="font-semibold text-pf-text-secondary">
+            Education
+          </span>
           <span className="text-pf-accent">**</span>
           <span className="text-pf-text-faint"> — </span>
           {data.education.institution}, {data.education.degree} in{" "}
           {data.education.major}
           <span className="text-pf-text-subtle">
-            {" "}({data.education.startDate} — {data.education.endDate})
+            {" "}
+            ({data.education.startDate} — {data.education.endDate})
           </span>
         </Ln>
 
         {/* Leadership */}
         <Ln>
           <span className="text-pf-accent">**</span>
-          <span className="text-pf-text-secondary font-semibold">Leadership</span>
+          <span className="font-semibold text-pf-text-secondary">
+            Leadership
+          </span>
           <span className="text-pf-accent">**</span>
           <span className="text-pf-text-faint"> — </span>
           {data.organization.name}, {data.organization.role}
           <span className="text-pf-text-subtle">
-            {" "}({data.organization.period})
+            {" "}
+            ({data.organization.period})
           </span>
         </Ln>
         <Ln />
 
-        <Ln><span className="text-pf-text-ghost">---</span></Ln>
+        <Ln>
+          <span className="text-pf-text-ghost">---</span>
+        </Ln>
         <Ln />
 
         {/* skills.md */}
         <Ln>
           <span className="text-pf-accent">## </span>
-          <span className="text-pf-text-primary font-bold">skills.md</span>
+          <span className="font-bold text-pf-text-primary">skills.md</span>
         </Ln>
         <Ln />
         {data.skills.map((cat) => (
           <Ln key={cat.category}>
             <span className="text-pf-accent">**</span>
-            <span className="text-pf-text-secondary font-semibold">
+            <span className="font-semibold text-pf-text-secondary">
               {cat.category}
             </span>
             <span className="text-pf-accent">**</span>
@@ -139,13 +151,15 @@ export function MarkdownPage({ onBack }: { onBack: () => void }) {
         ))}
         <Ln />
 
-        <Ln><span className="text-pf-text-ghost">---</span></Ln>
+        <Ln>
+          <span className="text-pf-text-ghost">---</span>
+        </Ln>
         <Ln />
 
         {/* journey.md */}
         <Ln>
           <span className="text-pf-accent">## </span>
-          <span className="text-pf-text-primary font-bold">journey.md</span>
+          <span className="font-bold text-pf-text-primary">journey.md</span>
         </Ln>
 
         {data.experience.map((exp) => (
@@ -153,13 +167,13 @@ export function MarkdownPage({ onBack }: { onBack: () => void }) {
             <Ln />
             <Ln>
               <span className="text-pf-accent">### </span>
-              <span className="text-pf-text-primary font-bold">
+              <span className="font-bold text-pf-text-primary">
                 {exp.company}
               </span>
             </Ln>
             <Ln>
               <span className="text-pf-accent">**</span>
-              <span className="text-pf-text-secondary font-semibold">
+              <span className="font-semibold text-pf-text-secondary">
                 {exp.role}
               </span>
               <span className="text-pf-accent">**</span>
@@ -197,13 +211,15 @@ export function MarkdownPage({ onBack }: { onBack: () => void }) {
         ))}
         <Ln />
 
-        <Ln><span className="text-pf-text-ghost">---</span></Ln>
+        <Ln>
+          <span className="text-pf-text-ghost">---</span>
+        </Ln>
         <Ln />
 
         {/* builds.md */}
         <Ln>
           <span className="text-pf-accent">## </span>
-          <span className="text-pf-text-primary font-bold">builds.md</span>
+          <span className="font-bold text-pf-text-primary">builds.md</span>
         </Ln>
 
         {data.projects.map((proj, i) => (
@@ -211,7 +227,7 @@ export function MarkdownPage({ onBack }: { onBack: () => void }) {
             <Ln />
             <Ln>
               <span className="text-pf-accent">### </span>
-              <span className="text-pf-text-primary font-bold">
+              <span className="font-bold text-pf-text-primary">
                 {String(i + 1).padStart(2, "0")} — {proj.name}
               </span>
             </Ln>
@@ -242,18 +258,20 @@ export function MarkdownPage({ onBack }: { onBack: () => void }) {
         ))}
         <Ln />
 
-        <Ln><span className="text-pf-text-ghost">---</span></Ln>
+        <Ln>
+          <span className="text-pf-text-ghost">---</span>
+        </Ln>
         <Ln />
 
         {/* connect.md */}
         <Ln>
           <span className="text-pf-accent">## </span>
-          <span className="text-pf-text-primary font-bold">connect.md</span>
+          <span className="font-bold text-pf-text-primary">connect.md</span>
         </Ln>
         <Ln />
         <Ln>
           <span className="text-pf-accent">### </span>
-          <span className="text-pf-text-primary font-bold">
+          <span className="font-bold text-pf-text-primary">
             LET&apos;S BUILD SOMETHING
           </span>
         </Ln>
@@ -279,7 +297,9 @@ export function MarkdownPage({ onBack }: { onBack: () => void }) {
         ))}
         <Ln />
 
-        <Ln><span className="text-pf-text-ghost">---</span></Ln>
+        <Ln>
+          <span className="text-pf-text-ghost">---</span>
+        </Ln>
         <Ln />
 
         {/* Footer */}

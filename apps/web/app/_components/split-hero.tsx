@@ -4,12 +4,12 @@ import { HeroContent } from "./hero-content"
 
 export function SplitHero() {
   return (
-    <section className="min-h-svh flex flex-col justify-center relative px-6">
+    <section className="relative flex min-h-svh flex-col justify-center px-6">
       <div className="absolute top-6 right-6">
         <ThemeToggle className="border-pf-border bg-pf-surface text-pf-text-primary hover:bg-pf-muted" />
       </div>
 
-      <div className="max-w-5xl mx-auto w-full grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-18 items-center">
+      <div className="mx-auto grid w-full max-w-5xl grid-cols-1 items-center gap-12 md:grid-cols-2 md:gap-18">
         {/* Left — Interactive content */}
         <HeroContent />
 

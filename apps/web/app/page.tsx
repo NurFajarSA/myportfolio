@@ -40,31 +40,31 @@ export default function HomePage() {
         <SplitHero />
 
         {/* // soul.md */}
-        <section className="py-24 md:py-32 px-6" aria-label="About">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="font-mono text-sm text-pf-accent mb-12">
+        <section className="px-6 py-24 md:py-32" aria-label="About">
+          <div className="mx-auto max-w-4xl">
+            <h2 className="mb-12 font-mono text-sm text-pf-accent">
               {"// soul.md"}
             </h2>
 
             <TextReveal>
-              <p className="text-lg md:text-xl font-light leading-relaxed text-pf-text-body">
+              <p className="text-lg leading-relaxed font-light text-pf-text-body md:text-xl">
                 {data.personal.summary}
               </p>
             </TextReveal>
 
             <TextReveal>
-              <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 gap-8">
+              <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2">
                 <article>
-                  <p className="text-xs uppercase tracking-wider text-pf-text-faint mb-2">
+                  <p className="mb-2 text-xs tracking-wider text-pf-text-faint uppercase">
                     Education
                   </p>
                   <p className="font-medium text-pf-text-secondary">
                     {data.education.institution}
                   </p>
-                  <p className="text-sm text-pf-text-muted mt-1">
+                  <p className="mt-1 text-sm text-pf-text-muted">
                     {data.education.degree}, {data.education.major}
                   </p>
-                  <p className="text-sm text-pf-text-subtle mt-1">
+                  <p className="mt-1 text-sm text-pf-text-subtle">
                     <time className="font-mono">
                       {data.education.startDate} — {data.education.endDate}
                     </time>
@@ -72,19 +72,19 @@ export default function HomePage() {
                 </article>
 
                 <article>
-                  <p className="text-xs uppercase tracking-wider text-pf-text-faint mb-2">
+                  <p className="mb-2 text-xs tracking-wider text-pf-text-faint uppercase">
                     Leadership
                   </p>
                   <p className="font-medium text-pf-text-secondary">
                     {data.organization.name}
                   </p>
-                  <p className="text-sm text-pf-text-muted mt-1">
+                  <p className="mt-1 text-sm text-pf-text-muted">
                     {data.organization.role}
                   </p>
-                  <p className="text-sm text-pf-text-subtle mt-1 font-mono">
+                  <p className="mt-1 font-mono text-sm text-pf-text-subtle">
                     {data.organization.period}
                   </p>
-                  <p className="text-sm text-pf-text-subtle mt-2">
+                  <p className="mt-2 text-sm text-pf-text-subtle">
                     {data.organization.highlights[0]}
                   </p>
                 </article>
@@ -93,19 +93,19 @@ export default function HomePage() {
           </div>
         </section>
 
-        <Separator className="bg-pf-border-muted max-w-4xl mx-auto" />
+        <Separator className="mx-auto max-w-4xl bg-pf-border-muted" />
 
         <MarqueeSkills />
 
-        <Separator className="bg-pf-border-muted max-w-4xl mx-auto" />
+        <Separator className="mx-auto max-w-4xl bg-pf-border-muted" />
 
         <ExperienceSection />
 
-        <Separator className="bg-pf-border-muted max-w-4xl mx-auto" />
+        <Separator className="mx-auto max-w-4xl bg-pf-border-muted" />
 
         <ProjectsSection />
 
-        <Separator className="bg-pf-border-muted max-w-4xl mx-auto" />
+        <Separator className="mx-auto max-w-4xl bg-pf-border-muted" />
 
         <ContactSection />
       </div>

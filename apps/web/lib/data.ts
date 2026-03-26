@@ -81,7 +81,8 @@ export const data: PortfolioData = {
     location: "Jakarta, Indonesia",
     summary:
       "Nearly 2 years of experience in full-stack development, building scalable information systems across enterprise, startup, and university environments using modern web technologies, with a proven track record of translating business needs into scalable and impactful technical solutions.",
-    tagline: "Building scalable systems across enterprise, startup & university environments.",
+    tagline:
+      "Building scalable systems across enterprise, startup & university environments.",
     email: "nur.fajarsa@gmail.com",
     phone: "(+62) 855-5941-4940",
     socialLinks: [

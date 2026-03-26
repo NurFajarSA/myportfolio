@@ -4,6 +4,7 @@
 
 @custom-variant dark (&:is(.dark *));
 @source "../../../apps/**/*.{ts,tsx}";
+@source "../../../apps/web/content/**/*.{mdx}";
 @source "../../../components/**/*.{ts,tsx}";
 @source "../**/*.{ts,tsx}";
 
@@ -168,6 +169,50 @@
   body {
     @apply bg-background text-foreground;
     }
+}
+
+/* Prose styles for MDX content */
+.prose-pf {
+  @apply text-pf-text-body leading-relaxed;
+
+  h1 { @apply text-3xl font-bold text-pf-text-primary mt-10 mb-4 tracking-tight; }
+  h2 { @apply text-2xl font-semibold text-pf-text-primary mt-8 mb-3 tracking-tight; }
+  h3 { @apply text-xl font-semibold text-pf-text-secondary mt-6 mb-2; }
+  h4 { @apply text-lg font-medium text-pf-text-secondary mt-4 mb-2; }
+
+  p { @apply my-4; }
+  a { @apply text-pf-accent underline underline-offset-4 hover:opacity-80 transition-opacity; }
+  strong { @apply font-semibold text-pf-text-primary; }
+  em { @apply italic; }
+
+  ul { @apply my-4 ml-6 list-disc; }
+  ol { @apply my-4 ml-6 list-decimal; }
+  li { @apply my-1; }
+
+  blockquote {
+    @apply border-l-2 border-pf-accent pl-4 my-4 italic text-pf-text-muted;
+  }
+
+  code {
+    @apply bg-pf-muted/50 text-pf-accent px-1.5 py-0.5 rounded text-sm font-mono;
+  }
+
+  pre {
+    @apply bg-pf-surface border border-pf-border rounded-lg p-4 my-6 overflow-x-auto;
+
+    code {
+      @apply bg-transparent p-0 text-inherit;
+    }
+  }
+
+  hr { @apply border-pf-border-muted my-8; }
+
+  img { @apply rounded-lg my-6; }
+
+  table { @apply w-full my-6 text-sm; }
+  thead { @apply border-b border-pf-border; }
+  th { @apply text-left p-2 font-medium text-pf-text-primary; }
+  td { @apply p-2 border-b border-pf-border-muted; }
 }
 
 @keyframes typing {
