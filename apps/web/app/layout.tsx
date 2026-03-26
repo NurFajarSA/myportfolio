@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import { Geist_Mono, Figtree } from "next/font/google"
 
+import Script from "next/script"
 import "@workspace/ui/globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 import { cn } from "@workspace/ui/lib/utils"
@@ -69,6 +70,12 @@ export default function RootLayout({
       )}
     >
       <body>
+        <Script
+          defer
+          src="https://cloud.umami.is/script.js"
+          data-website-id="41213aad-9ab3-45ee-b05f-f3e18efc4adf"
+          strategy="afterInteractive"
+        />
         <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>
