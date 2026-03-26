@@ -12,6 +12,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@giscus/react": "^3.1.0",
     "@workspace/ui": "workspace:*",
     "lucide-react": "^1.6.0",
     "next": "16.2.1",

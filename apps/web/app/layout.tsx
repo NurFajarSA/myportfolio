@@ -44,6 +44,12 @@ export const metadata: Metadata = {
       "Building scalable systems across enterprise, startup & university environments.",
   },
   robots: { index: true, follow: true },
+  alternates: {
+    canonical: "https://nurfajar.com",
+    types: {
+      "application/rss+xml": "https://nurfajar.com/feed.xml",
+    },
+  },
 }
 
 export default function RootLayout({
